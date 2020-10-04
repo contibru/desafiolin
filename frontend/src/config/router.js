@@ -33,15 +33,20 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    const json = localStorage.getItem(userKey)
 
-    if (to.matched.some(record => record.meta.requiresAdmin)) {
-        const user = JSON.parse(json)
-        user && user.admin ? next() : next({
-            path: '/'
-        })
+    if (to.name != "auth") {
+
+        let token = JSON.parse(localStorage.getItem(userKey));
+
+        if (token.accessToken) {
+            next(true);
+        } else {
+            next({
+                name: "auth"
+            });
+        }
     } else {
-        next()
+        next(true);
     }
 })
 
