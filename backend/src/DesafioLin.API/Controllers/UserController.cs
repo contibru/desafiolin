@@ -39,23 +39,6 @@ namespace DesafioLin.API.Controllers
             return Ok(_userService.GetAllWithAuthorizations());
         }
 
-        // POST api/values
-        [HttpPost]
-        public ActionResult<string> Post([FromBody] User user)
-        {
-            _userService.Insert(user);
-
-            if (user.Id > 0)
-            {
-                // Insere o orçamento
-                return Ok();
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-
         [HttpPut]
         public ActionResult<string> Put([FromBody] User user)
         {

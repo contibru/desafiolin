@@ -117,7 +117,8 @@ namespace DesafioLin.API.Security
                 AccessToken = token,
                 RefreshToken = Guid.NewGuid().ToString().Replace("-", String.Empty),
                 Message = "OK",
-                idUser = credenciais.idUser
+                idUser = credenciais.idUser,
+                Login = credenciais.login
             };
         }
     }

@@ -12,7 +12,7 @@ namespace DesafioLin.Infraestructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Login = table.Column<string>(maxLength: 200, nullable: true),
+                    Login = table.Column<string>(maxLength: 200, nullable: false),
                     Password = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
@@ -45,6 +45,12 @@ namespace DesafioLin.Infraestructure.Migrations
                 name: "IX_authorization_userId",
                 table: "authorization",
                 column: "userId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_user_Login",
+                table: "user",
+                column: "Login",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

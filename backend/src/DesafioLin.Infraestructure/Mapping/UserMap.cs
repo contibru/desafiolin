@@ -11,12 +11,17 @@ namespace DesafioLin.Infraestructure.Mapping
         {
             builder.ToTable("user");
             builder.HasKey(x => x.Id);
+
             builder.Property(x => x.Login)
               .HasColumnName("Login")
+              .IsRequired()
               .HasMaxLength(200);
+
             builder.Property(x => x.Password)
               .HasColumnName("Password")
               .HasMaxLength(200);
+
+            builder.HasIndex(u => u.Login).IsUnique();
         }
     }
 }

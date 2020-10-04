@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DesafioLin.Common\DesafioLin.Common.csproj" />
     <ProjectReference Include="..\DesafioLin.Domain\DesafioLin.Domain.csproj" />
     <ProjectReference Include="..\DesafioLin.Infraestructure\DesafioLin.Infraestructure.csproj" />
     

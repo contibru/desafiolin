@@ -52,7 +52,7 @@
           <b-button variant="danger" v-if="mode === 'remove'" @click="remove"
             >Remove</b-button
           >
-          <b-button class="ml-2" @click="reset">Cancelar</b-button>
+          <b-button class="ml-2" @click="reset">Abort</b-button>
         </b-col>
       </b-row>
     </b-form>

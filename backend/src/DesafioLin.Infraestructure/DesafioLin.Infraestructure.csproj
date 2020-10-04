@@ -38,8 +38,6 @@
   </ItemGroup>
 
     <ItemGroup>
-    
-    <ProjectReference Include="..\DesafioLin.Common\DesafioLin.Common.csproj" />
     <ProjectReference Include="..\DesafioLin.Domain\DesafioLin.Domain.csproj" />
 
   </ItemGroup>

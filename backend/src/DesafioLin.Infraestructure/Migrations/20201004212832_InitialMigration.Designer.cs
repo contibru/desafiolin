@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DesafioLin.Infraestructure.Migrations
 {
     [DbContext(typeof(DesafioLinContext))]
-    [Migration("20201004142300_InitialMigration")]
+    [Migration("20201004212832_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,7 @@ namespace DesafioLin.Infraestructure.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Login")
+                        .IsRequired()
                         .HasColumnName("Login")
                         .HasColumnType("TEXT")
                         .HasMaxLength(200);
@@ -60,6 +61,9 @@ namespace DesafioLin.Infraestructure.Migrations
                         .HasMaxLength(200);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Login")
+                        .IsUnique();
 
                     b.ToTable("user");
                 });

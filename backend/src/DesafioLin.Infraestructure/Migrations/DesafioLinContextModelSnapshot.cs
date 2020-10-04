@@ -48,6 +48,7 @@ namespace DesafioLin.Infraestructure.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Login")
+                        .IsRequired()
                         .HasColumnName("Login")
                         .HasColumnType("TEXT")
                         .HasMaxLength(200);
@@ -58,6 +59,9 @@ namespace DesafioLin.Infraestructure.Migrations
                         .HasMaxLength(200);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Login")
+                        .IsUnique();
 
                     b.ToTable("user");
                 });

@@ -21,7 +21,6 @@ namespace DesafioLin.Infraestructure.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-                //optionsBuilder.UseSqlite(Configuration["ConexaoSqlite:SqliteConnectionString"]);
                 optionsBuilder.UseSqlite("Data Source=..\\DesafioLin.db");
         }
 

@@ -1,18 +1,12 @@
 <template>
   <div id="app" :class="{ 'hide-menu': true }">
-    <Header
-      title="Cod3r - Base de Conhecimento"
-      :hideToggle="!user"
-      :hideUserDropdown="!user"
-    />
+    <Header title="DesafioLIN" :hideToggle="!user" :hideUserDropdown="!user" />
 
     <Loading v-if="validatingToken" />
     <Content v-else />
     <Footer />
   </div>
 </template>
-
-
 
 <script>
 import { userKey } from "@/global";
@@ -42,6 +36,8 @@ export default {
         this.validatingToken = false;
         this.$router.push({ name: "auth" });
         return;
+      } else {
+        this.$store.commit("setUser", userData);
       }
 
       this.validatingToken = false;

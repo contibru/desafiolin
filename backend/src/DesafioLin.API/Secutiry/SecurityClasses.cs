@@ -29,6 +29,7 @@ namespace DesafioLin.API.Security
         public string RefreshToken { get; set; }
         public string Message { get; set; }
 
+        public string Login { get; set; }
         public int idUser { get; set; }
     }
 

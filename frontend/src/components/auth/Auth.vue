@@ -4,7 +4,7 @@
       <img src="@/assets/logo.png" width="200" alt="Logo" />
       <hr />
       <div class="auth-title">
-        {{ showSignup ? "Create Account" : "Login" }}
+        {{ showSignup ? "Sign-Up" : "Sign-In" }}
       </div>
 
       <input
@@ -21,11 +21,11 @@
       />
 
       <button size="sm" v-if="showSignup" @click="signup">Sign-Up</button>
-      <button size="sm" v-else @click="signin">Log-In</button>
+      <button size="sm" v-else @click="signin">Sign-In</button>
 
       <a href @click.prevent="showSignup = !showSignup">
         <span v-if="showSignup">Already have an account? Sign-In</span>
-        <span v-else>New here? Create your account here!</span>
+        <span v-else>New here? Sign-up here!</span>
       </a>
     </div>
   </div>
@@ -37,7 +37,7 @@ import axios from "axios";
 
 export default {
   name: "Auth",
-  data: function () {
+  data: function() {
     return {
       showSignup: false,
       user: { grantType: "password" },
@@ -50,7 +50,7 @@ export default {
         .then((res) => {
           this.$store.commit("setUser", res.data);
           localStorage.setItem(userKey, JSON.stringify(res.data));
-          this.$router.push({ path: "/" });
+          this.$router.push({ path: "/admin" });
         })
         .catch(showError);
     },

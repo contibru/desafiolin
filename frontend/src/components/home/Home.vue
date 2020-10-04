@@ -11,9 +11,7 @@ export default {
   name: "Home",
   components: { PageTitle },
   data: function () {
-    return {
-      stat: {},
-    };
+    return {};
   },
   methods: {},
   mounted() {},

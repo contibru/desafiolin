@@ -44,8 +44,8 @@ namespace DesafioLin.API
             var tokenConfigurations = new TokenConfigurations
             {
                 Seconds = 86400,
-                Audience = "http://DesafioLinapisandbox.us-east-2.elasticbeanstalk.com",
-                Issuer = "Sances Sistemas"
+                Audience = "localhost",
+                Issuer = "Bruno Conti"
             };
 
             new ConfigureFromConfigurationOptions<TokenConfigurations>(
@@ -114,6 +114,7 @@ namespace DesafioLin.API
                 app.UseHsts();
             }
 
+            //Realiza as Migrations do Ef Core.
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<DesafioLinContext>();
@@ -129,8 +130,6 @@ namespace DesafioLin.API
             });
 
             app.UseMiddleware<ErrorHandlerMiddleware>();
-
-            //app.UseMvc(ConfigureODataRoutes);
 
             app.UseMvc();
 

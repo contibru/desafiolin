@@ -2,6 +2,7 @@
 using DesafioLin.Domain.Entities;
 using DesafioLin.DomainServices.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace DesafioLin.API.Controllers
@@ -20,28 +21,32 @@ namespace DesafioLin.API.Controllers
         [HttpPost]
         public ActionResult<string> SignUp([FromBody] SignUpDTO signUpDto)
         {
+            // Adiciona as autorizações manualmente variando as permissões randomicamente.
+            Random r = new Random();
+
             var authCanAddCustomer = new Authorization()
             {
-                Name = "CanCanAddCustomer",
-                Value = true
-            };
-
-            var authCanAddProduct = new Authorization()
-            {
-                Name = "CanAddProduct",
-                Value = true
+                Name = "CanAddCustomer",
+                Value = r.NextDouble() < 50 / 100.0
             };
 
             var authCanGetCustomers = new Authorization()
             {
                 Name = "CanGetCustomers",
-                Value = true
+                Value = r.NextDouble() < 50 / 100.0
             };
+
+            var authCanAddProduct = new Authorization()
+            {
+                Name = "CanAddProduct",
+                Value = r.NextDouble() < 50 / 100.0
+            };
+
 
             var authCanGetProducts = new Authorization()
             {
                 Name = "CanGetProducts",
-                Value = true
+                Value = r.NextDouble() < 50 / 100.0
             };
 
             signUpDto.authorizations = new List<Authorization>

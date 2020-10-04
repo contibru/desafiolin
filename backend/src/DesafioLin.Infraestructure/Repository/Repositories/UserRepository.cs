@@ -16,7 +16,7 @@ namespace DesafioLin.Infraestructure.Repository
         public bool UserHasAuthorization(int idUser, string authName)
         {
             return dbContext.Set<Authorization>()
-                .Where(x => x.user.Id == idUser && x.Name.Trim().ToLower() == authName.Trim().ToLower())
+                .Where(x => x.user.Id == idUser && x.Name.Trim().ToLower() == authName.Trim().ToLower() && x.Value)
                 .Count() > 0;
         }
 
