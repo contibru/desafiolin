@@ -16,6 +16,6 @@ namespace DesafioLin.Domain.Entities
         public virtual string Name { get; set; }
         public virtual bool Value { get; set; }
 
-        public virtual Usuario usuario { get; set; }
+        public virtual User user { get; set; }
     }
 }

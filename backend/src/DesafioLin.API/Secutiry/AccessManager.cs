@@ -36,15 +36,15 @@ namespace DesafioLin.API.Security
         public AccessCredentials ValidateCredentials(AccessCredentials credenciais)
         {
             bool credenciaisValidas = false;
-            Usuario usuario;
+            User user;
 
             if (credenciais != null && !String.IsNullOrWhiteSpace(credenciais.login))
             {
                 if (credenciais.GrantType == null || credenciais.GrantType == "password")
                 {
-                    usuario = _loginRepository.Login(credenciais.login, credenciais.senha);
+                    user = _loginRepository.Login(credenciais.login, credenciais.password);
 
-                    if (usuario == null)
+                    if (user == null)
                     {
                         return null;
                     }

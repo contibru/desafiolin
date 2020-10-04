@@ -3,27 +3,29 @@
     <div class="auth-modal">
       <img src="@/assets/logo.png" width="200" alt="Logo" />
       <hr />
-      <div class="auth-title">{{ showSignup ? "Cadastro" : "Login" }}</div>
+      <div class="auth-title">
+        {{ showSignup ? "Create Account" : "Login" }}
+      </div>
 
       <input
         v-model="user.login"
         name="login"
-        type="text"
+        type="email"
         placeholder="E-mail"
       />
       <input
-        v-model="user.senha"
-        name="senha"
+        v-model="user.password"
+        name="password"
         type="password"
-        placeholder="Senha"
+        placeholder="Password"
       />
 
-      <button v-if="showSignup" @click="signup">Registrar</button>
-      <button v-else @click="signin">Entrar</button>
+      <button size="sm" v-if="showSignup" @click="signup">Sign-Up</button>
+      <button size="sm" v-else @click="signin">Log-In</button>
 
       <a href @click.prevent="showSignup = !showSignup">
-        <span v-if="showSignup">Já tem cadastro? Acesse o Login!</span>
-        <span v-else>Não tem cadastro? Registre-se aqui!</span>
+        <span v-if="showSignup">Already have an account? Sign-In</span>
+        <span v-else>New here? Create your account here!</span>
       </a>
     </div>
   </div>

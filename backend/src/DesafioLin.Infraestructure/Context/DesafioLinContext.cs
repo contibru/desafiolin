@@ -32,7 +32,7 @@ namespace DesafioLin.Infraestructure.Context
             // Esse comando aplica os mapeamentos (Configurations no EF Core) para todas as classes.
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DesafioLinContext).Assembly);
 
-            modelBuilder.Entity<Usuario>();
+            modelBuilder.Entity<User>();
 
             modelBuilder.Entity<Authorization>();
         }

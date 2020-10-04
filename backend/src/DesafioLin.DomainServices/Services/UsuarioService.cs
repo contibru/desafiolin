@@ -5,52 +5,52 @@ using System.Collections.Generic;
 
 namespace DesafioLin.DomainServices.Services
 {
-    public class UsuarioService : ServiceBase, IUsuarioService
+    public class UserService : ServiceBase, IUserService
     {
-        private readonly IUsuarioRepository _repositoryUsuario;
+        private readonly IUserRepository _repositoryUser;
 
-        public UsuarioService(IUsuarioRepository repository)
+        public UserService(IUserRepository repository)
         {
-            _repositoryUsuario = repository;
+            _repositoryUser = repository;
         }
 
-        public void Update(Usuario usuario)
+        public void Update(User user)
         {
-            _repositoryUsuario.Update(usuario);
-            _repositoryUsuario.Commit();
+            _repositoryUser.Update(user);
+            _repositoryUser.Commit();
         }
 
-        public IEnumerable<Usuario> GetAll()
+        public IEnumerable<User> GetAll()
         {
-            return _repositoryUsuario.GetAll();
+            return _repositoryUser.GetAll();
         }
 
-        public IEnumerable<Usuario> GetAllWithAuthorizations()
+        public IEnumerable<User> GetAllWithAuthorizations()
         {
-            return _repositoryUsuario.GetAllWithAuthorizations();
+            return _repositoryUser.GetAllWithAuthorizations();
         }
 
-        public Usuario GetById(int codigoUsu)
+        public User GetById(int idUser)
         {
-            return _repositoryUsuario.GetById(codigoUsu);
+            return _repositoryUser.GetById(idUser);
         }
 
-        public void Insert(Usuario usuario)
+        public void Insert(User user)
         {
-            _repositoryUsuario.Insert(usuario);
-            _repositoryUsuario.Commit();
+            _repositoryUser.Insert(user);
+            _repositoryUser.Commit();
         }
 
-        public void Delete(int codigo_usu)
+        public void Delete(int idUser)
         {
-            Usuario usuario = _repositoryUsuario.GetById(codigo_usu);
-            _repositoryUsuario.Delete(usuario);
-            _repositoryUsuario.Commit();
+            User user = _repositoryUser.GetById(idUser);
+            _repositoryUser.Delete(user);
+            _repositoryUser.Commit();
         }
 
-        public bool UsuarioHasAuthorization(int idUsuario, string authName)
+        public bool UserHasAuthorization(int idUser, string authName)
         {
-            return _repositoryUsuario.UsuarioHasAuthorization(idUsuario, authName);
+            return _repositoryUser.UserHasAuthorization(idUser, authName);
         }
     }
 }

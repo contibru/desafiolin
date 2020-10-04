@@ -14,11 +14,11 @@ namespace DesafioLin.Infraestructure.Repository
             _context = context;
         }
 
-        public Usuario Login(string login, string senha)
+        public User Login(string login, string senha)
         {
-            return _context.Set<Usuario>()
+            return _context.Set<User>()
                 .Where(x => x.Login.Equals(login))
-                .Where(x => x.Senha.Equals(senha))
+                .Where(x => x.Password.Equals(senha))
                 .Include(x => x.authorizations)
                 .FirstOrDefault();
         }

@@ -3,20 +3,20 @@ using System.Collections.Generic;
 
 namespace DesafioLin.DomainServices.Interfaces
 {
-    public interface IUsuarioService : IServiceBase
+    public interface IUserService : IServiceBase
     {
-        void Insert(Usuario usuario);
+        void Insert(User user);
 
-        IEnumerable<Usuario> GetAll();
+        IEnumerable<User> GetAll();
 
         void Delete(int id);
 
-        void Update(Usuario usuario);
+        void Update(User user);
 
-        Usuario GetById(int id);
+        User GetById(int id);
 
-        bool UsuarioHasAuthorization(int idUsuario, string authName);
+        bool UserHasAuthorization(int idUser, string authName);
 
-        IEnumerable<Usuario> GetAllWithAuthorizations();
+        IEnumerable<User> GetAllWithAuthorizations();
     }
 }

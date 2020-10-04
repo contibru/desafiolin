@@ -1,14 +1,10 @@
 <template>
   <div class="admin-pages">
-    <PageTitle
-      icon="fa fa-cogs"
-      main="Administração do Sistema"
-      sub="Cadastros & Cia"
-    />
+    <PageTitle icon="fa fa-cogs" main="Administration" sub="Desafio Lin" />
     <div class="admin-pages-tabs">
       <b-card no-body>
         <b-tabs card>
-          <b-tab title="Usuários">
+          <b-tab title="Users">
             <UserAdmin />
           </b-tab>
         </b-tabs>

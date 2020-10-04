@@ -11,7 +11,7 @@
               v-model="user.login"
               required
               :readonly="mode === 'remove'"
-              placeholder="Informe o login do Usuário..."
+              placeholder="Your e-mail..."
               autocomplete="off"
             />
           </b-form-group>
@@ -19,26 +19,38 @@
       </b-row>
       <b-row v-show="mode === 'save'">
         <b-col md="6" sm="12">
-          <b-form-group label="Senha:" label-for="user-senha">
+          <b-form-group label="Password:" label-for="user-password">
             <b-form-input
-              id="user-senha"
+              id="user-password"
               type="password"
-              v-model="user.senha"
+              v-model="user.password"
               required
-              placeholder="Informe a Senha do Usuário..."
+              placeholder="Your password..."
             />
           </b-form-group>
         </b-col>
       </b-row>
-      <b-table hover striped :items="user.authorizations" :fields="authFields">
+      <b-table
+        small
+        hover
+        striped
+        :items="user.authorizations"
+        :fields="authFields"
+      >
+        <template slot="actions" slot-scope="data">
+          <b-form-select
+            v-model="data.item.value"
+            :options="options"
+          ></b-form-select>
+        </template>
       </b-table>
       <b-row>
         <b-col xs="12">
           <b-button variant="primary" v-if="mode === 'save'" @click="save"
-            >Salvar</b-button
+            >Save</b-button
           >
           <b-button variant="danger" v-if="mode === 'remove'" @click="remove"
-            >Excluir</b-button
+            >Remove</b-button
           >
           <b-button class="ml-2" @click="reset">Cancelar</b-button>
         </b-col>
@@ -67,24 +79,23 @@ export default {
       user: {},
       users: [],
       fields: [
-        { key: "id", label: "Código", sortable: true },
+        { key: "id", label: "Id", sortable: true },
         { key: "login", label: "Login", sortable: true },
-        { key: "actions", label: "Ações" },
+        { key: "actions", label: "Actions" },
       ],
       authFields: [
-        { key: "name", label: "Autorização", sortable: true },
-        {
-          key: "Value",
-          label: "Autorizado?",
-          sortable: true,
-          formatter: (value) => (value ? "Sim" : "Não"),
-        },
+        { key: "name", label: "Authorization", sortable: true },
+        { key: "actions", label: "Authorized", sortable: true },
+      ],
+      options: [
+        { text: "Yes", value: true },
+        { text: "No", value: false },
       ],
     };
   },
   methods: {
     loadUsers() {
-      const url = `${baseApiUrl}usuario`;
+      const url = `${baseApiUrl}user`;
       axios.get(url).then((res) => {
         this.users = res.data;
       });
@@ -96,8 +107,7 @@ export default {
     },
     save() {
       const method = this.user.id ? "put" : "post";
-      const id = this.user.id ? `/${this.user.id}` : "";
-      axios[method](`${baseApiUrl}usuario${id}`, this.user)
+      axios[method](`${baseApiUrl}user`, this.user)
         .then(() => {
           this.$toasted.global.defaultSuccess();
           this.reset();

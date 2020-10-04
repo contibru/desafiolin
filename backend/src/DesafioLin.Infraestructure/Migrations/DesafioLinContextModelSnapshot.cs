@@ -31,17 +31,17 @@ namespace DesafioLin.Infraestructure.Migrations
                         .HasColumnName("Value")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("usuarioId")
+                    b.Property<int?>("userId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("usuarioId");
+                    b.HasIndex("userId");
 
                     b.ToTable("authorization");
                 });
 
-            modelBuilder.Entity("DesafioLin.Domain.Entities.Usuario", b =>
+            modelBuilder.Entity("DesafioLin.Domain.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -52,21 +52,21 @@ namespace DesafioLin.Infraestructure.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(200);
 
-                    b.Property<string>("Senha")
-                        .HasColumnName("Senha")
+                    b.Property<string>("Password")
+                        .HasColumnName("Password")
                         .HasColumnType("TEXT")
                         .HasMaxLength(200);
 
                     b.HasKey("Id");
 
-                    b.ToTable("usuario");
+                    b.ToTable("user");
                 });
 
             modelBuilder.Entity("DesafioLin.Domain.Entities.Authorization", b =>
                 {
-                    b.HasOne("DesafioLin.Domain.Entities.Usuario", "usuario")
+                    b.HasOne("DesafioLin.Domain.Entities.User", "user")
                         .WithMany("authorizations")
-                        .HasForeignKey("usuarioId");
+                        .HasForeignKey("userId");
                 });
 #pragma warning restore 612, 618
         }

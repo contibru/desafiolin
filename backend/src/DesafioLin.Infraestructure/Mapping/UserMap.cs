@@ -5,17 +5,17 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace DesafioLin.Infraestructure.Mapping
 
 {
-    public class UsuarioMap : IEntityTypeConfiguration<Usuario>
+    public class UserMap : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<Usuario> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("usuario");
+            builder.ToTable("user");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Login)
               .HasColumnName("Login")
               .HasMaxLength(200);
-            builder.Property(x => x.Senha)
-              .HasColumnName("Senha")
+            builder.Property(x => x.Password)
+              .HasColumnName("Password")
               .HasMaxLength(200);
         }
     }

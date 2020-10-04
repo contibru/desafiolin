@@ -23,11 +23,7 @@ namespace DesafioLin.API.Controllers
             }
             else
             {
-                return Unauthorized(new
-                {
-                    Authenticated = false,
-                    Message = "Falha ao autenticar"
-                });
+                return Unauthorized();
             }
         }
     }

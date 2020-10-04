@@ -7,17 +7,17 @@ namespace DesafioLin.Infraestructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "usuario",
+                name: "user",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Login = table.Column<string>(maxLength: 200, nullable: true),
-                    Senha = table.Column<string>(maxLength: 200, nullable: true)
+                    Password = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_usuario", x => x.Id);
+                    table.PrimaryKey("PK_user", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -28,23 +28,23 @@ namespace DesafioLin.Infraestructure.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 200, nullable: true),
                     Value = table.Column<bool>(nullable: false),
-                    usuarioId = table.Column<int>(nullable: true)
+                    userId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_authorization", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_authorization_usuario_usuarioId",
-                        column: x => x.usuarioId,
-                        principalTable: "usuario",
+                        name: "FK_authorization_user_userId",
+                        column: x => x.userId,
+                        principalTable: "user",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_authorization_usuarioId",
+                name: "IX_authorization_userId",
                 table: "authorization",
-                column: "usuarioId");
+                column: "userId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -53,7 +53,7 @@ namespace DesafioLin.Infraestructure.Migrations
                 name: "authorization");
 
             migrationBuilder.DropTable(
-                name: "usuario");
+                name: "user");
         }
     }
 }

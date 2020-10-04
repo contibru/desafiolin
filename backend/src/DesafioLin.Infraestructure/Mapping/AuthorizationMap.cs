@@ -17,7 +17,7 @@ namespace DesafioLin.Infraestructure.Mapping
             builder.Property(x => x.Value)
               .HasColumnName("Value");
 
-            builder.HasOne(x => x.usuario)
+            builder.HasOne(x => x.user)
                 .WithMany(c => c.authorizations);
         }
     }

@@ -10,11 +10,11 @@ namespace DesafioLin.API.Controllers
     [ApiController]
     public class SignUpController : Controller
     {
-        private readonly IUsuarioService _usuarioService;
+        private readonly IUserService _userService;
 
-        public SignUpController(IUsuarioService usuarioService)
+        public SignUpController(IUserService userService)
         {
-            _usuarioService = usuarioService;
+            _userService = userService;
         }
 
         [HttpPost]
@@ -52,16 +52,16 @@ namespace DesafioLin.API.Controllers
                 authCanGetProducts
             };
 
-            var usuario = new Usuario()
+            var user = new User()
             {
                 Login = signUpDto.login,
-                Senha = signUpDto.senha,
+                Password = signUpDto.password,
                 authorizations = signUpDto.authorizations
             };
 
-            _usuarioService.Insert(usuario);
+            _userService.Insert(user);
 
-            if (usuario.Id > 0)
+            if (user.Id > 0)
             {
                 return Ok();
             }

@@ -9,6 +9,7 @@ using DesafioLin.Infraestructure.Repository.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -90,12 +91,12 @@ namespace DesafioLin.API
 
             // Configura a injeção de dependência do projeto.
             // Por exemplo, essa linha abaixo diz que:
-            // Sempre que alguém quiser usar IUsuarioRepository, o sistema vai injetar a classe UsuarioRepository.
+            // Sempre que alguém quiser usar IUserRepository, o sistema vai injetar a classe UserRepository.
             services.AddScoped<IRepository<IEntityBase>, RepositoryEF<IEntityBase>>();
-            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddScoped<IServiceBase, ServiceBase>();
-            services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "DesafioLin.API", Version = "v1" }));
         }
@@ -111,6 +112,12 @@ namespace DesafioLin.API
             {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+            }
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<DesafioLinContext>();
+                context.Database.Migrate();
             }
 
             app.UseCors(config =>

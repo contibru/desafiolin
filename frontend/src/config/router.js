@@ -38,7 +38,9 @@ router.beforeEach((to, from, next) => {
 
         let token = JSON.parse(localStorage.getItem(userKey));
 
-        if (token.accessToken) {
+        var tokenExpiration = new Date(token.expiration);
+
+        if (token.accessToken && new Date() < tokenExpiration) {
             next(true);
         } else {
             next({

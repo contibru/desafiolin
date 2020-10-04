@@ -6,8 +6,6 @@
 
 <script>
 import PageTitle from "../template/PageTitle";
-import axios from "axios";
-import { baseApiUrl } from "@/global";
 
 export default {
   name: "Home",
