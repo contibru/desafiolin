@@ -1,4 +1,4 @@
-# Fron-end
+# Front-end
 ```
 Tecnologias e Frameworks: Vue.JS / BootstrapVue / Axios
 ```
