@@ -1,4 +1,4 @@
-# FRONT-END
+# Fron-end
 ```
 Tecnologias e Frameworks: Vue.JS / BootstrapVue / Axios
 ```
@@ -13,7 +13,8 @@ npm install
 npm run serve
 ```
 
-# BACK-END
+
+# Back-end
 ```
 Tecnologias e Frameworks: Asp Net Core 3.1 / Web Api / Entity Framework Core
 ```
