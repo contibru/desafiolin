@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DesafioLin.Common\DesafioLin.Common.csproj" />
+    <ProjectReference Include="..\DesafioLin.Domain\DesafioLin.Domain.csproj" />
+    <ProjectReference Include="..\DesafioLin.Infraestructure\DesafioLin.Infraestructure.csproj" />
+    
+  </ItemGroup>
+</Project>
