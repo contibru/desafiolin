@@ -57,7 +57,7 @@
       </b-row>
     </b-form>
     <hr />
-    <b-table hover striped :items="users" :fields="fields">
+    <b-table small hover striped :items="users" :fields="fields">
       <template slot="actions" slot-scope="data">
         <b-button variant="success" @click="loadUser(data.item)" class="mr-2">
           <i class="fa fa-eye"></i>

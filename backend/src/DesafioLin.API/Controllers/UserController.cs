@@ -28,7 +28,7 @@ namespace DesafioLin.API.Controllers
             }
             else
             {
-                return Unauthorized();
+                return Forbid();
             }
         }
 

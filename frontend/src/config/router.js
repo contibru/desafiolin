@@ -21,7 +21,7 @@ const routes = [{
         component: Auth
     },
     {
-        name: 'admin',
+        name: 'adminPages',
         path: '/admin',
         component: AdminPages
     }

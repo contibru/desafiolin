@@ -7,6 +7,9 @@
           <b-tab title="Users">
             <UserAdmin />
           </b-tab>
+          <b-tab title="Authorization Test">
+            <AuthorizationTest />
+          </b-tab>
         </b-tabs>
       </b-card>
     </div>
@@ -16,10 +19,11 @@
 <script>
 import PageTitle from "../template/PageTitle";
 import UserAdmin from "./UserAdmin";
+import AuthorizationTest from "./AuthorizationTest";
 
 export default {
   name: "AdminPages",
-  components: { PageTitle, UserAdmin },
+  components: { PageTitle, UserAdmin, AuthorizationTest },
 };
 </script>
 

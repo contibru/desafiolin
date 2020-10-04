@@ -17,6 +17,7 @@ namespace DesafioLin.API.Security
         public string password { get; set; }
         public string RefreshToken { get; set; }
         public string GrantType { get; set; }
+        public int idUser { get; set; }
     }
 
     public class Token
@@ -27,6 +28,8 @@ namespace DesafioLin.API.Security
         public string AccessToken { get; set; }
         public string RefreshToken { get; set; }
         public string Message { get; set; }
+
+        public int idUser { get; set; }
     }
 
     public class RefreshTokenData

@@ -1,16 +1,21 @@
 <template>
   <div id="app" :class="{ 'hide-menu': true }">
-    <Header title="Desafio LIN" :hideToggle="!user" :hideUserDropdown="!user" />
-    <Menu v-if="user" />
+    <Header
+      title="Cod3r - Base de Conhecimento"
+      :hideToggle="!user"
+      :hideUserDropdown="!user"
+    />
+
     <Loading v-if="validatingToken" />
     <Content v-else />
     <Footer />
   </div>
 </template>
 
+
+
 <script>
-import axios from "axios";
-import { baseApiUrl, userKey } from "@/global";
+import { userKey } from "@/global";
 import { mapState } from "vuex";
 import Header from "@/components/template/Header";
 import Content from "@/components/template/Content";
@@ -30,11 +35,8 @@ export default {
     async validateToken() {
       this.validatingToken = true;
 
-      const json = localStorage.getItem("__desafiolin_user");
-
+      const json = localStorage.getItem(userKey);
       const userData = JSON.parse(json);
-
-      this.$store.commit("setUser", null);
 
       if (!userData) {
         this.validatingToken = false;
@@ -42,20 +44,6 @@ export default {
         return;
       }
 
-      var partesData = userData.expiration.split("/");
-      var data = new Date(partesData[2], partesData[1] - 1, partesData[0]);
-      if (new Date() > data) {
-        const res = await axios.post(`${baseApiUrl}signin`, userData);
-        if (res.data) {
-          this.$store.commit("setUser", userData);
-        } else {
-          localStorage.removeItem(userKey);
-          this.$router.push({ name: "auth" });
-        }
-      }
-      if (this.$mq === "xs" || this.$mq === "sm") {
-        this.$store.commit("toggleMenu", false);
-      }
       this.validatingToken = false;
     },
   },

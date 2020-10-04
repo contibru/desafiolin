@@ -48,7 +48,7 @@ namespace DesafioLin.API.Security
                     {
                         return null;
                     }
-
+                    credenciais.idUser = user.Id;
                     credenciaisValidas = true;
                 }
                 else if (credenciais.GrantType == "refresh_token")
@@ -116,7 +116,8 @@ namespace DesafioLin.API.Security
                 Expiration = dataExpiracao.ToString("yyyy-MM-dd HH:mm:ss"),
                 AccessToken = token,
                 RefreshToken = Guid.NewGuid().ToString().Replace("-", String.Empty),
-                Message = "OK"
+                Message = "OK",
+                idUser = credenciais.idUser
             };
         }
     }
